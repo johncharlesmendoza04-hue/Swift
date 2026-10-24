@@ -236,7 +236,7 @@ const SYSTEM=[
 "- One self-contained file with inline <style> and <script>. No libraries or images loaded by URL; Google Fonts links are allowed. Draw visuals with CSS, gradients and inline SVG. Never use emojis; use inline SVG icons.",
 "- Valid semantic HTML5 with a viewport meta tag. Responsive with CSS grid, flexbox and clamp(); works at 360px wide.",
 "- Design: define 4 to 6 CSS variables on :root for a distinctive palette, use one or two typefaces with a clear type scale, generous spacing, one consistent radius, visible hover and focus states, subtle transitions and strong contrast. Never ship unstyled buttons or default blue links. Write real, specific copy, never lorem ipsum.",
-"- Functionality: every button, form and control must work. Use vanilla JavaScript with small clear functions and event listeners. No placeholders or TODO comments. Wrap localStorage use in try/catch. Handle empty and error states.",
+"- Functionality: EVERY interactive element you draw must really work. Each button, link, tab, toggle, form, menu, modal, filter, search box, counter, slider and icon needs an event listener with a visible result. No dead buttons and no href=\"#\" that goes nowhere: scroll to a real section id or open a real modal. Build real state and sample data in JavaScript (arrays and objects) and implement add, edit, delete, search, sort, validation, loading and empty states, plus keyboard support (Enter, Escape, Tab focus). If a feature implies a backend (login, checkout, payment, email, saving), simulate it completely in the browser with localStorage inside try/catch and show clear success and error messages. Before finishing, mentally click every control and confirm its handler exists and its element id matches. Use vanilla JavaScript with small clear functions. No placeholders or TODO comments.",
 "- When given a current file plus a change request, return the complete updated file and keep everything that was not asked to change.",
 "- Before closing the block, make sure all tags are closed and every id used in JavaScript exists in the HTML."].join('\n');
 const PREFILL="```html\n<!DOCTYPE html>\n";
@@ -360,7 +360,7 @@ async function loadModel(st){
 }
 
 /* ---------- cloud (Puter.js, no API key) ---------- */
-const CLOUD_MODELS=['deepseek/deepseek-v4.1-flash','moonshotai/kimi-k2.6','z-ai/glm-5.1','poolside/laguna-m.1:free','minimax/minimax-m3'];
+const CLOUD_MODELS=['moonshotai/kimi-k2.6','deepseek/deepseek-v4.1-flash','z-ai/glm-5.1','poolside/laguna-m.1:free','minimax/minimax-m3'];
 const perr=e=>e?.error?.message||e?.message||(typeof e==='string'?e:'Cloud request failed');
 async function cloudChat(msgs,o){
   if(!window.puter)throw new Error('Puter.js could not be loaded from js.puter.com. Check your internet connection or ad blocker.');
